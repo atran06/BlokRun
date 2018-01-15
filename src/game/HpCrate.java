@@ -13,7 +13,7 @@ public class HpCrate extends GameObject {
 		
 	}
 	public void paintComponent(Graphics g) {
-		g.setColor(Color.red);
+		g.setColor(Color.yellow);
 		g.fillRect(x, y, 64, 64);
 	}
 	public Rectangle getBounds() {
