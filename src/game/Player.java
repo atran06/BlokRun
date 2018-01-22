@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 public class Player extends GameObject {
 
 	Handler handler;
+	
 	private Image image;
 	private boolean canDamage = true;
 	public Timer timer;
@@ -115,8 +116,10 @@ public class Player extends GameObject {
 			}
 			if(tempObject.getID() == ID.hp) {
 				if(getBounds().intersects(tempObject.getBounds())) {
-					Game.HP += 10;
-					handler.removeObject(tempObject);
+					//Game.HP += 10;
+					//handler.removeObject(tempObject);
+					handler.switchlvl();
+					Game.HP = 100;
 				}
 			}
 		}

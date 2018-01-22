@@ -26,11 +26,12 @@ public class Game extends JPanel implements ActionListener {
 	public static Camera camera;
 	private HP hp;
 	
-	private BufferedImage level = null;
+	public static BufferedImage level = null, level2 = null;
 	private Image back;
 	private Image hpBot;
 	
 	public static int HP = 100;
+	public static int lvl = 1;
 	
 	public static enum STATE {
 		game,
@@ -43,8 +44,8 @@ public class Game extends JPanel implements ActionListener {
 	public Game() {
 		timer.start();
 		
-		handler = new Handler();
 		camera = new Camera(0, 0);
+		handler = new Handler(camera);
 		menu = new Menu();
 		setting = new Settings();
 		win = new Win();
@@ -52,6 +53,7 @@ public class Game extends JPanel implements ActionListener {
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		level = loader.imageLoader("/resources/Blok_Scene_HP.png");
+		level2 = loader.imageLoader("/resources/Blok_Scene_HP1.png");
 		
 		loadLevel(level);
 		loadImage();
@@ -86,10 +88,10 @@ public class Game extends JPanel implements ActionListener {
 		back = new ImageIcon(getClass().getResource("/resources/Blok_Back.png")).getImage();
 		hpBot = new ImageIcon(getClass().getResource("/resources/Blok_HP_Bottom.png")).getImage();
 	}
-	private void loadLevel(BufferedImage image) {
+	public static void loadLevel(BufferedImage image) {
 			
 		int w = image.getWidth();
-		int h= image.getHeight();
+		int h = image.getHeight();
 			
 		for(int xx = 0; xx < w; xx++) {
 			for(int yy = 0; yy < h; yy++) {

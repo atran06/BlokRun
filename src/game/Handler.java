@@ -8,6 +8,11 @@ public class Handler {
 	LinkedList<GameObject> list = new LinkedList<>();
 	protected boolean up = false, down = false, right = false, left = false;
 	
+	Camera camera;
+	
+	public Handler(Camera camera) {
+		this.camera = camera;
+	}
 	public void tick() {
 		for(int i = 0; i < list.size(); i++) {
 			GameObject tempObject = list.get(i);
@@ -27,6 +32,20 @@ public class Handler {
 	}
 	public void removeObject(GameObject tempObject) {
 		list.remove(tempObject);
+	}
+	private void clearLvl() {
+		list.clear();
+	}
+	public void switchlvl() {
+		clearLvl();
+		camera.setX(0);
+		camera.setY(0);
+		
+		switch(Game.lvl) {
+		case 1:
+			Game.loadLevel(Game.level2);
+			break;
+		}
 	}
 	public boolean isUp() {
 		return up;
