@@ -111,15 +111,14 @@ public class Player extends GameObject {
 			}
 			if(tempObject.getID() == ID.door) {
 				if(getBounds().intersects(tempObject.getBounds())) {
-					Game.state = Game.STATE.win;
+					handler.switchlvl();
+					Game.HP = 100;
 				}
 			}
 			if(tempObject.getID() == ID.hp) {
 				if(getBounds().intersects(tempObject.getBounds())) {
-					//Game.HP += 10;
-					//handler.removeObject(tempObject);
-					handler.switchlvl();
-					Game.HP = 100;
+					Game.HP += 10;
+					handler.removeObject(tempObject);
 				}
 			}
 		}
