@@ -25,7 +25,6 @@ public class Camera {
 		if(y >= 3406) {
 			y = 3406;
 		}
-		System.out.println(getX() + " " + getY());
 	}
 	public float getX() {
 		return x;
